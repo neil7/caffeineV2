@@ -1,0 +1,19 @@
+# Core engine (always needed)
+numpy>=1.24
+h5py>=3.9
+
+# Optional fast cache backend (InMemoryCache is the default fallback)
+redis>=5.0
+
+# PyTorch modalities
+torch>=2.1
+torchvision>=0.16
+
+# NLP modality (DistilBERT / Amazon reviews)
+transformers>=4.40
+datasets>=2.18
+scikit-learn>=1.3
+
+# Config + progress
+pyyaml>=6.0
+tqdm>=4.66

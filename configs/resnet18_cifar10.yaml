@@ -1,0 +1,33 @@
+# ResNet-18 / CIFAR-10 unlearning experiment
+modality: resnet18_cifar10
+
+model:
+  num_classes: 10
+
+data:
+  root: data/raw
+  batch_size: 128
+  augment: true
+
+train:
+  epochs: 100
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 5.0e-4
+  checkpoint_every: 20      # epochs
+  collect_batches: 50       # batches per K-FAC collection pass
+
+unlearn:
+  # Koh & Liang use 1e-2 for the CNN; 1e-4 is too small for ResNet and
+  # produces oversized delta_W. Increase damping first if Δθ norms explode.
+  damping: 1.0e-2
+
+split:
+  forget_mode: random       # random | class
+  forget_size: 100
+  forget_class: null        # only used when forget_mode == class
+  seed: 17
+
+storage:
+  h5: kfac_factors_resnet.h5
+  ckpt_dir: checkpoints/resnet_cifar

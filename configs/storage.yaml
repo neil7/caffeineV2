@@ -1,0 +1,16 @@
+# Cache backend + TTL configuration (consumed by kfac_unlearn.cache.make_cache).
+# InMemoryCache is the default so experiments run with zero external services.
+
+backend: inmemory          # inmemory | redis
+
+# Only used when backend == redis:
+host: localhost
+port: 6379
+db: 0
+password: null
+
+# Optional TTL overrides (seconds). Defaults: hvp 3600, grad 1800, hinv 7200.
+ttl_overrides:
+  # hvp: 3600
+  # grad: 1800
+  # hinv: 7200

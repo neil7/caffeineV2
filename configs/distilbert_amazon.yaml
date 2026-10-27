@@ -1,0 +1,33 @@
+# DistilBERT / Amazon-reviews unlearning experiment
+modality: distilbert_amazon
+
+model:
+  name: distilbert-base-uncased
+  num_labels: 5             # amazon_reviews_multi stars (1..5 -> 0..4)
+
+data:
+  # amazon_reviews_multi is delisted from the HF hub; loader tries mirrors.
+  max_length: 256
+  batch_size: 32
+  subset_train: 50000
+  subset_test: 10000
+
+train:
+  steps: 3000
+  lr: 2.0e-5
+  checkpoint_every: 1000    # steps
+  collect_batches: 50
+  max_grad_norm: 1.0
+
+unlearn:
+  damping: 1.0e-2
+
+split:
+  forget_mode: random
+  forget_size: 100
+  forget_class: null
+  seed: 17
+
+storage:
+  h5: kfac_factors_distilbert.h5
+  ckpt_dir: checkpoints/distilbert_amazon

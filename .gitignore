@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Data + artefacts (never commit)
+data/raw/
+data/cache/
+datasets/
+*.h5
+*.hdf5
+checkpoints/
+*.pt
+*.ckpt
+runs/
+results/
+run_meta.json
+*.log
+
+# Environments
+.venv/
+venv/
+.env
+
+# Notebooks / OS / Tools
+.ipynb_checkpoints/
+.DS_Store
+.claude/
